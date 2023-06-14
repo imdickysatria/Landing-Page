@@ -1,0 +1,9 @@
+
+.addPost{
+    max-width: 600px;
+    border: solid 1px;
+    margin-left: 40px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px;
+}

@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Product from "../src/container/pages/Product/Product";
+import Header from "../src/container/Layout/Header";
+import Home from "../src/container/pages/Home/Home";
+// import Footer from '../Layout/Footer';
+// import { BrowserRouter } from 'react-router-dom'
+import PostCard from "../src/container/pages/PostCard/PostCard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "../src/container/pages/About/About";
+import DetailPost from "../src/container/pages/PostCard/DetailPost/DetailPost";
+import Order from "../src/component/Order/Order";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/article" element={<PostCard />} />
+        <Route path="/article/detail-post/:id" element={<DetailPost />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/order" element={<Order />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
