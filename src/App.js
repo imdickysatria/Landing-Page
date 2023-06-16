@@ -9,6 +9,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "../src/container/pages/About/About";
 import DetailPost from "../src/container/pages/PostCard/DetailPost/DetailPost";
 import Order from "../src/component/Order/Order";
+import Hooks from "./container/pages/Hooks/Hooks";
+import Login from "../src/container/pages/Login/Login";
+import Register from "../src/container/pages/Register/Register";
+import Dashboard from "./container/pages/Dashboard";
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/about" element={<About />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/hooks" element={<Hooks />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

@@ -33,34 +33,23 @@ class PostCard extends Component {
   };
 
   postDataToAPI = () => {
-    axios.post("http://localhost:3004/posts", this.state.formPost).then(
-      (res) => {
-        console.log(res);
-        this.getPostAPI();
-        this.setState({
-          isUpdate: false,
-          formPost: {
-            id: 1,
-            title: "",
-            body: "",
-            userId: 1,
-          },
-        });
-      },
-      (err) => {
-        console.log("error", err);
-      }
-    );
+    API.postNewsBlog(this.state.formPost).then((res) => {
+      this.getPostAPI();
+      this.setState({
+        isUpdate: false,
+        formPost: {
+          id: 1,
+          title: "",
+          body: "",
+          userId: 1,
+        },
+      });
+    });
   };
 
   putDataToAPI = () => {
-    axios
-      .put(
-        `http://localhost:3004/posts/${this.state.formPost.id}`,
-        this.state.formPost
-      )
-      .then((res) => {
-        console.log(res);
+    API.updateNewsBlog(this.state.formPost, this.state.formPost.id).then(
+      (res) => {
         this.getPostAPI();
         this.setState({
           isUpdate: false,
@@ -71,7 +60,8 @@ class PostCard extends Component {
             userId: 1,
           },
         });
-      });
+      }
+    );
   };
 
   handleUpdate = (data) => {
@@ -84,7 +74,7 @@ class PostCard extends Component {
   };
 
   handleRemove = (data) => {
-    axios.delete(`http://localhost:3004/posts/${data}`).then(() => {
+    API.deleteNewsBlog(data).then((res) => {
       this.getPostAPI();
     });
   };
@@ -176,14 +166,14 @@ class PostCard extends Component {
         </div>
         <h1 className="mt-10">List Post</h1>
 
-        {this.state.articles.map((article) => {
+        {/* {this.state.articles.map((article) => {
           return (
             <div>
               <p>{article.title}</p>
               <p>{article.id}</p>
             </div>
           );
-        })}
+        })} */}
 
         {this.state.post.map((post) => {
           // return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail}/>
